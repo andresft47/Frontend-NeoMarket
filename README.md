@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# NeoMarket - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este es el frontend del proyecto **NeoMarket**, la interfaz de usuario con la que interactuarán los clientes. Está construido utilizando tecnologías modernas para garantizar un rendimiento óptimo y una experiencia de desarrollo fluida.
 
-## Available Scripts
+## 🚀 Tecnologías y Dependencias
 
-In the project directory, you can run:
+El proyecto utiliza `npm` para gestionar sus dependencias. Las principales herramientas son:
+- **React (v19)**: Librería principal para construir las interfaces de usuario.
+- **Vite (v8)**: Entorno de desarrollo ultrarrápido y empaquetador moderno (reemplaza a Create React App).
+- **Tailwind CSS (v4)**: Framework de utilidades CSS para estilizar los componentes rápidamente sin salir del archivo JavaScript.
+- **React Router DOM (v7)**: Para el enrutamiento y la navegación entre páginas (ej. pasar del inicio a la vista de productos).
+- **Lucide React**: Biblioteca de iconos moderna y ligera.
 
-### `npm start`
+## ⚙️ Configuración Actual
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+La configuración principal se encuentra en los siguientes archivos:
+- **`vite.config.js`**: Configuración del servidor de desarrollo de Vite.
+- **`tailwind.config.js`** / **`postcss.config.js`**: Configuración del motor de estilos de Tailwind.
+- **Puerto de desarrollo:** Vite suele inicializarse en el puerto **`5173`** (a menos que esté ocupado, en cuyo caso usará el siguiente disponible).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Cómo Ejecutar el Proyecto Localmente
 
-### `npm test`
+Para correr el frontend necesitas tener instalado **Node.js** (versión 18 o superior).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Abre tu terminal** y asegúrate de estar en la carpeta `frontend`.
+2. **Instala las dependencias** (solo es necesario la primera vez o si se agregan nuevas librerías):
+   ```bash
+   npm install
+   ```
+3. **Inicia el servidor de desarrollo:**
+   ```bash
+   npm run dev
+   ```
+4. En tu consola aparecerá la URL local (usualmente `http://localhost:5173`). Haz clic en ella o cópiala en tu navegador web.
 
-### `npm run build`
+## 📦 Construcción para Producción (Despliegue)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Cuando el proyecto esté terminado y quieras subirlo a un servidor (producción), debes generar una versión optimizada ejecutando:
+```bash
+npm run build
+```
+Esto creará una carpeta `dist/` con los archivos minificados, los cuales pueden ser subidos a servicios como Vercel, Netlify o cualquier servidor web.
