@@ -33,7 +33,7 @@ export const AppRoutes = () => {
           }
         />
         <Route
-          path="dashboard"
+          path="micuenta"
           element={
             <ProtectedRoute>
               <DashboardPage />

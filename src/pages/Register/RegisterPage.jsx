@@ -32,7 +32,7 @@ export const RegisterPage = () => {
     if (!form.email.trim())     newErrors.email    = 'El correo es requerido';
     else if (!/\S+@\S+\.\S+/.test(form.email)) newErrors.email = 'Correo inválido';
     if (!form.password)         newErrors.password = 'La contraseña es requerida';
-    else if (!/^\d{6}$/.test(form.password)) newErrors.password = 'Usa 6 dígitos numéricos (ej: 123456)';
+    else if (form.password.length < 6) newErrors.password = 'La contraseña debe tener al menos 6 caracteres';
     if (form.password !== form.confirmPassword) {
       newErrors.confirmPassword = 'Las contraseñas no coinciden';
     }
@@ -60,7 +60,7 @@ export const RegisterPage = () => {
         telefono: form.telefono.trim() || undefined,
         password: form.password,
       });
-      navigate('/dashboard');
+      navigate('/micuenta');
     } catch (err) {
       setError(extractApiError(err));
     } finally {
@@ -73,8 +73,8 @@ export const RegisterPage = () => {
     { name: 'apellido',        label: 'Apellido',             icon: User,  type: 'text',     placeholder: 'Pérez', required: true },
     { name: 'email',           label: 'Correo electrónico',   icon: Mail,  type: 'email',    placeholder: 'juan@ejemplo.com', required: true },
     { name: 'telefono',        label: 'Teléfono (opcional)',  icon: Phone, type: 'tel',      placeholder: '300 123 4567', required: false },
-    { name: 'password',        label: 'Contraseña (6 dígitos)', icon: Lock,  type: 'password', placeholder: '123456', required: true, inputMode: 'numeric', maxLength: 6 },
-    { name: 'confirmPassword', label: 'Confirmar contraseña', icon: Lock,  type: 'password', placeholder: '123456', required: true, inputMode: 'numeric', maxLength: 6 },
+    { name: 'password',        label: 'Contraseña (mín. 6 caracteres)', icon: Lock,  type: 'password', placeholder: 'Mínimo 6 caracteres', required: true },
+    { name: 'confirmPassword', label: 'Confirmar contraseña', icon: Lock,  type: 'password', placeholder: 'Repite tu contraseña', required: true },
   ];
 
   return (

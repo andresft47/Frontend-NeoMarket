@@ -17,7 +17,7 @@ export const Navbar = () => {
   const navLinks = [
     { name: 'Home', path: '/', guestOnly: true },
     { name: 'Productos', path: '/productos' },
-    { name: 'Mi cuenta', path: '/dashboard', authOnly: true },
+    { name: 'Mi cuenta', path: '/micuenta', authOnly: true },
   ].filter((link) => {
     if (link.guestOnly && isAuthenticated) return false;
     if (link.authOnly && !isAuthenticated) return false;
@@ -100,7 +100,7 @@ export const Navbar = () => {
                       <p className="text-xs text-gray-500 truncate">{cliente?.email}</p>
                     </div>
                     <Link
-                      to="/dashboard"
+                      to="/micuenta"
                       className="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
                       onClick={() => setShowUserMenu(false)}
                     >

@@ -75,7 +75,7 @@ export const CheckoutPage = () => {
           <div className="flex flex-col gap-3">
             <button
               id="checkout-go-dashboard-btn"
-              onClick={() => navigate('/dashboard')}
+              onClick={() => navigate('/micuenta')}
               className="btn-primary py-3 rounded-xl"
             >
               Ver mi historial

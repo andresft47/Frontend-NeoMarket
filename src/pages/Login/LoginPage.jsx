@@ -28,7 +28,7 @@ export const LoginPage = () => {
     setLoading(true);
     try {
       await login(email.trim(), password);
-      navigate('/dashboard');
+      navigate('/micuenta');
     } catch (err) {
       setError(extractApiError(err));
     } finally {
