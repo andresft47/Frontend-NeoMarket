@@ -81,9 +81,7 @@ export const LoginPage = () => {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="123456"
-                  inputMode="numeric"
-                  maxLength={6}
+                  placeholder="Tu contraseña"
                   className="form-input pl-10"
                   autoComplete="current-password"
                 />

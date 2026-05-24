@@ -25,10 +25,28 @@ const TABS = [
   { id: 'motor', label: 'Motor de recomendación', icon: Brain },
 ];
 
+/** Fecha sin hora (ej. fechaRegistro del backend: "2026-05-24"). Evita desfase por UTC. */
+const formatLocalDate = (dateStr) => {
+  if (!dateStr) return '—';
+  const match = String(dateStr).match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (!match) return dateStr;
+  const [, year, month, day] = match;
+  const date = new Date(Number(year), Number(month) - 1, Number(day));
+  return date.toLocaleDateString('es-CO', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+};
+
+/** Fecha y hora (ej. compras: LocalDateTime del backend). */
 const formatDate = (dateStr) => {
   if (!dateStr) return '—';
   try {
-    return new Date(dateStr).toLocaleDateString('es-CO', {
+    const normalized = String(dateStr).includes('T')
+      ? dateStr
+      : `${dateStr}T00:00:00`;
+    return new Date(normalized).toLocaleDateString('es-CO', {
       year: 'numeric',
       month: 'short',
       day: 'numeric',
@@ -196,7 +214,7 @@ export const DashboardPage = () => {
                   </div>
                   <div>
                     <p className="text-xs font-medium text-gray-400 uppercase tracking-wide">Miembro desde</p>
-                    <p className="text-gray-900 font-medium">{formatDate(cliente.fechaRegistro)}</p>
+                    <p className="text-gray-900 font-medium">{formatLocalDate(cliente.fechaRegistro)}</p>
                   </div>
                 </div>
               )}
