@@ -1,20 +1,45 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { MainLayout } from '../layouts/MainLayout';
-import { HomePage } from '../pages/Home/HomePage';
-// Placeholder pages
-const ProductsPage = () => <div className="p-8 text-center"><h1 className="text-3xl font-bold">Productos</h1><p className="mt-4 text-gray-600">Página de productos en construcción...</p></div>;
-const DashboardPage = () => <div className="p-8 text-center"><h1 className="text-3xl font-bold">Dashboard</h1><p className="mt-4 text-gray-600">Panel de control en construcción...</p></div>;
-const LoginPage = () => <div className="p-8 text-center"><h1 className="text-3xl font-bold">Login</h1><p className="mt-4 text-gray-600">Página de inicio de sesión en construcción...</p></div>;
+import { ProtectedRoute } from '../components/ProtectedRoute';
+
+// Pages
+import { HomePage }      from '../pages/Home/HomePage';
+import { LoginPage }     from '../pages/Login/LoginPage';
+import { RegisterPage }  from '../pages/Register/RegisterPage';
+import { ProductsPage }  from '../pages/Products/ProductsPage';
+import { CartPage }      from '../pages/Cart/CartPage';
+import { CheckoutPage }  from '../pages/Checkout/CheckoutPage';
+import { DashboardPage } from '../pages/Dashboard/DashboardPage';
 
 export const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>
-        <Route index element={<HomePage />} />
+        {/* Public routes */}
+        <Route index          element={<HomePage />} />
+        <Route path="login"   element={<LoginPage />} />
+        <Route path="registro" element={<RegisterPage />} />
         <Route path="productos" element={<ProductsPage />} />
-        <Route path="dashboard" element={<DashboardPage />} />
-        <Route path="login" element={<LoginPage />} />
+        <Route path="carrito"   element={<CartPage />} />
+
+        {/* Protected routes (requieren sesión) */}
+        <Route
+          path="checkout"
+          element={
+            <ProtectedRoute>
+              <CheckoutPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="micuenta"
+          element={
+            <ProtectedRoute>
+              <DashboardPage />
+            </ProtectedRoute>
+          }
+        />
       </Route>
     </Routes>
   );

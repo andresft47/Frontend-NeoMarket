@@ -33,10 +33,3 @@ Para correr el frontend necesitas tener instalado **Node.js** (versión 18 o sup
    ```
 4. En tu consola aparecerá la URL local (usualmente `http://localhost:5173`). Haz clic en ella o cópiala en tu navegador web.
 
-## 📦 Construcción para Producción (Despliegue)
-
-Cuando el proyecto esté terminado y quieras subirlo a un servidor (producción), debes generar una versión optimizada ejecutando:
-```bash
-npm run build
-```
-Esto creará una carpeta `dist/` con los archivos minificados, los cuales pueden ser subidos a servicios como Vercel, Netlify o cualquier servidor web.
