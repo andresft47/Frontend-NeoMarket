@@ -113,7 +113,7 @@ export const DashboardPage = () => {
     }
   }, [tabActiva, cliente?.id, comprasInicializado]);
 
-  const productosComprados = compras.flatMap((compra) =>
+  const productosComprados = (Array.isArray(compras) ? compras : []).flatMap((compra) =>
     (compra.detalles ?? []).map((d) => ({
       compraId: compra.id,
       fecha: compra.fecha,
@@ -124,7 +124,7 @@ export const DashboardPage = () => {
     }))
   );
 
-  const totalGastado = compras.reduce((sum, c) => sum + (c.total ?? 0), 0);
+  const totalGastado = (Array.isArray(compras) ? compras : []).reduce((sum, c) => sum + (c.total ?? 0), 0);
 
   return (
     <div className="page-container pt-6 pb-16">

@@ -46,10 +46,21 @@ export const CheckoutPage = () => {
       setSuccess(true);
       clearCart();
     } catch (err) {
-      const msg = err.response?.data?.message
-        || err.response?.data
-        || 'Error al registrar la compra. Intenta de nuevo.';
-      setError(String(msg));
+      let msg = 'Error al registrar la compra. Intenta de nuevo.';
+      if (err.response?.data) {
+        if (typeof err.response.data === 'string') {
+          msg = err.response.data;
+        } else if (err.response.data.message) {
+          msg = err.response.data.message;
+        } else if (err.response.data.error) {
+          msg = err.response.data.error;
+        } else {
+          msg = JSON.stringify(err.response.data);
+        }
+      } else if (err.message) {
+        msg = err.message;
+      }
+      setError(msg);
     } finally {
       setLoading(false);
     }
