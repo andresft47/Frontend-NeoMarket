@@ -1,6 +1,7 @@
 import React from 'react';
 import { ShoppingCart, Heart, Package } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { useWishlist } from '../context/WishlistContext';
 
 /**
  * Tarjeta de producto.
@@ -9,16 +10,18 @@ import { useCart } from '../context/CartContext';
  */
 export const ProductCard = ({ product }) => {
   const { addItem } = useCart();
+  const { toggleWishlist, isWishlist } = useWishlist();
 
   // El backend envía: id, nombre, precio, stock, activo + categoria (objeto o string)
   const nombre     = product.nombre  ?? product.name;
   const precio     = product.precio  ?? product.price ?? 0;
   const categoria  = product.categoria?.nombre ?? product.categoria ?? product.category ?? '';
-  const imagen     = product.image   ?? null;
+  const imagen     = product.imagen ?? product.image ?? null;
   const isNew      = product.isNew   ?? false;
   const masVendido = product.masVendido ?? false;
   const descuento  = product.discount ?? null;
   const oldPrice   = product.oldPrice ?? null;
+  const favorito   = isWishlist(product.id);
 
   const handleAddToCart = (e) => {
     e.preventDefault();
@@ -29,6 +32,11 @@ export const ProductCard = ({ product }) => {
       categoria,
       imagen,
     });
+  };
+
+  const handleWishlist = (e) => {
+    e.preventDefault();
+    toggleWishlist(product.id);
   };
 
   return (
@@ -60,8 +68,13 @@ export const ProductCard = ({ product }) => {
         )}
 
         {/* Wishlist */}
-        <button className="btn-wishlist" aria-label="Guardar en favoritos">
-          <Heart className="h-5 w-5" />
+        <button
+          className={`btn-wishlist ${favorito ? 'active' : ''}`}
+          onClick={handleWishlist}
+          aria-label={favorito ? 'Quitar de favoritos' : 'Guardar en favoritos'}
+          aria-pressed={favorito}
+        >
+          <Heart className="h-5 w-5" fill={favorito ? 'currentColor' : 'none'} />
         </button>
       </div>
 

@@ -102,12 +102,12 @@
   .product-card:hover { box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); }
 
   .product-image-container {
-    @apply relative aspect-square overflow-hidden bg-gray-50 flex items-center justify-center p-6;
+    @apply relative aspect-square overflow-hidden bg-gray-50 flex items-center justify-center;
   }
 
   /* NOTE: group-hover must be applied directly in JSX with className="group" on product-card */
   .product-image {
-    @apply object-contain w-full h-full;
+    @apply object-cover w-full h-full;
     transition: transform 0.5s ease-in-out;
   }
   .product-card:hover .product-image { transform: scale(1.1); }
@@ -133,6 +133,11 @@
   }
   .product-card:hover .btn-wishlist { opacity: 1; }
   .btn-wishlist:hover { color: #ef4444; background-color: #fff; }
+  .btn-wishlist.active {
+    opacity: 1;
+    color: #ef4444;
+    background-color: #fff;
+  }
 
   .product-info {
     @apply p-5 flex flex-col flex-grow;

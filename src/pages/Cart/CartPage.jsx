@@ -67,8 +67,8 @@ export const CartPage = () => {
             >
               {/* Imagen placeholder */}
               <div className="w-20 h-20 bg-gray-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                {item.imagen ? (
-                  <img src={item.imagen} alt={item.nombre} className="cart-item-img" />
+                {(item.imagen ?? item.image) ? (
+                  <img src={item.imagen ?? item.image} alt={item.nombre} className="cart-item-img" />
                 ) : (
                   <Package className="h-8 w-8 text-gray-300" />
                 )}
